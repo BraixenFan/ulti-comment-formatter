@@ -73,9 +73,13 @@ textarea {
   font-size: 3rem;
 }
 
-#submit-comment {
-  width: fit-content;
+.button-container {
   margin: 0 auto;
+}
+
+#submit-comment,
+#submit-comment-multiple {
+  width: fit-content;
   font-size: 4rem;
   padding: 2rem;
   border-radius: 3px;

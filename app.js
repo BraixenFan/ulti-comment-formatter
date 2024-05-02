@@ -14,7 +14,6 @@ function startFormatting() {
   let username = comment.substr(comment.indexOf("From") + date.length - 3, comment.indexOf(":") - comment.indexOf("From") - 5);
   let message = comment.substr(comment.indexOf(":") + 2, comment.length - username.length - date.length);
   //message.replace(/\r?\n/g, "<br>"); doesn't work
-  console.log(date.length);
 
   let formattedComment = "<strong>" + username + "</strong><br>" + date + "<br>\n" + message + "<br><br><br>";
 
@@ -23,19 +22,20 @@ function startFormatting() {
 
 function loopFormatting() {
   let comments = commentInput.value;
-  comments = comments.split("---");
+  comments = comments.split("[");
   commentOutput.textContent = "";
 
   console.log(comments)
 
-  comments.forEach((comment) => {
-    let date = comment.substr(comment.indexOf("[") + 1, comment.indexOf("]") - 1);
-    let username = comment.substr(comment.indexOf("From") + 5, comment.indexOf(":") - 16);
-    let message = comment.substr(comment.indexOf(":") + 2, comment.length);
-    console.log(date)
+  comments.forEach((comment, index) => {
+    if (index == 0) return;
+
+    let date = comment.substr(comment.indexOf("[") + 1, comment.indexOf("]"));
+    let username = comment.substr(comment.indexOf("From") + 5, comment.indexOf(":") - comment.indexOf("From") - 5);
+    let message = comment.substr(comment.indexOf(":") + 2, comment.length - username.length - date.length);
     //message.replace(/\r?\n/g, "<br>"); doesn't work
 
-    let formattedComment = "\n\n<strong>" + username + "</strong><br>" + date + "<br>\n" + message + "<br><br><br>";
+    let formattedComment = "<strong>" + username + "</strong><br>" + date + "<br>\n" + message + "<br><br><br>\n\n";
     commentOutput.textContent = commentOutput.textContent + formattedComment;
   })
 }

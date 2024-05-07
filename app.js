@@ -1,9 +1,9 @@
 const commentInput = document.getElementById("comment-input");
-const submitButton = document.getElementById("submit-comment");
+//const submitButton = document.getElementById("submit-comment");
 const submitMultipleButton = document.getElementById("submit-comment-multiple");
 const commentOutput = document.getElementById("formatted-output");
 
-submitButton.addEventListener("click", startFormatting);
+//submitButton.addEventListener("click", startFormatting);
 submitMultipleButton.addEventListener("click", loopFormatting);
 
 function startFormatting() {
@@ -33,7 +33,7 @@ function loopFormatting() {
     let date = comment.substr(comment.indexOf("[") + 1, comment.indexOf("]"));
     let username = comment.substr(comment.indexOf("From") + 5, comment.indexOf(":") - comment.indexOf("From") - 5);
     let message = comment.substr(comment.indexOf(":") + 2, comment.length - username.length - date.length);
-    //message.replace(/\r?\n/g, "<br>"); doesn't work
+    message = message.replaceAll(/\r?\n/g, "<br> \n")
 
     let formattedComment = "<strong>" + username + "</strong><br>" + date + "<br>\n" + message + "<br><br><br>\n\n";
     commentOutput.textContent = commentOutput.textContent + formattedComment;

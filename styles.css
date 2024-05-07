@@ -55,6 +55,7 @@ p {
   gap: 10px;
   margin: 0 auto;
   width: 75%;
+  padding: 10px;
 }
 
 h1 {
@@ -78,11 +79,17 @@ textarea {
 }
 
 #submit-comment,
-#submit-comment-multiple {
+#submit-comment-multiple,
+#copy-clipboard-button {
   width: fit-content;
   font-size: 4rem;
   padding: 2rem;
   border-radius: 3px;
+}
+
+#copy-clipboard-button {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 #formatted-output {

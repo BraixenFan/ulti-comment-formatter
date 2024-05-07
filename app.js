@@ -2,9 +2,11 @@ const commentInput = document.getElementById("comment-input");
 //const submitButton = document.getElementById("submit-comment");
 const submitMultipleButton = document.getElementById("submit-comment-multiple");
 const commentOutput = document.getElementById("formatted-output");
+const copyButton = document.getElementById("copy-clipboard-button");
 
 //submitButton.addEventListener("click", startFormatting);
 submitMultipleButton.addEventListener("click", loopFormatting);
+copyButton.addEventListener("click", copyToClipboard);
 
 function startFormatting() {
   let comment = commentInput.value;
@@ -38,4 +40,14 @@ function loopFormatting() {
     let formattedComment = "<strong>" + username + "</strong><br>" + date + "<br>\n" + message + "\n";
     commentOutput.textContent = commentOutput.textContent + formattedComment;
   })
+}
+
+function copyToClipboard() {
+  if (commentOutput.textContent == "Here is where the output will display") {
+    copyButton.textContent = "Nothing to copy!";
+  } else {
+    navigator.clipboard.writeText(commentOutput.textContent);
+    copyButton.textContent = "Successfully copied!";
+  }
+  setTimeout(() => { copyButton.textContent = "Copy to Clipboard" }, 2000)
 }

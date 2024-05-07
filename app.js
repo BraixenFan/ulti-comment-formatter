@@ -35,7 +35,7 @@ function loopFormatting() {
     let message = comment.substr(comment.indexOf(":") + 2, comment.length - username.length - date.length);
     message = message.replaceAll(/\r?\n/g, "<br> \n")
 
-    let formattedComment = "<strong>" + username + "</strong><br>" + date + "<br>\n" + message + "<br><br><br>\n\n";
+    let formattedComment = "<strong>" + username + "</strong><br>" + date + "<br>\n" + message + "\n";
     commentOutput.textContent = commentOutput.textContent + formattedComment;
   })
 }
